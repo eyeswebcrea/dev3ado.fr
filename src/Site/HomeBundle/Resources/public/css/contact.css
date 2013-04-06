@@ -1,0 +1,30 @@
+@orange: #F5954B; // Couleur primaire F2B441
+@noir: black; 
+@rouge: red;
+@rose: #F4C3BC;
+
+
+div#contact, div#moyen-payement {
+	color: white;
+	font-family: cursive;
+	font-size: 18px;
+	h2 {
+		font-size: 24px;
+		color: white;
+		font-weight: bold;
+		border-bottom: solid darken(@rouge, 30%) 2px;
+		text-shadow: 1px 1px 1px darken(@rouge, 30%);
+	}
+}
+
+div#conteneur-bandeau {
+	display: none;
+}
+
+
+div#plan-acces p {
+	font-size: 16px;
+	text-align: center;
+	padding: 2px;
+
+}

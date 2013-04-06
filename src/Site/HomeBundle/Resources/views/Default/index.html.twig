@@ -1,0 +1,48 @@
+{% extends "::base.html.twig" %}
+
+
+{% block stylesheets %}
+	    {% 
+        		stylesheets output='css/mercerie.css' 
+        		'@SiteHomeBundle/Resources/public/css/index.css'
+        %}        		
+        	<link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="screen" />
+        {% endstylesheets %}
+{% endblock %}
+
+{% block body %}
+
+{% import "SiteHomeBundle:Default:functions.html.twig" as tools %}
+
+	<div class="block last produits-list prepend-top append-bottom">
+		{% for rubrique in boucleRubriques({"idRubrique" : 6 }) %}
+			<div class="block last item  span-24 produits-item" id="produits-item-1">
+					<div class="block span-6 produits-item-partie-gauche">
+						<h2 class="block-title">{{ rubrique.getTitre() }}</h2>
+						<div class="block-scrshot">
+							{% for images in boucleRubriques({ "idParent" : rubrique.getIdRubrique()}) %}
+								{% if images.isContainIdMot(1) %}
+									{{ getSpipJquerySlider(images.getIdRubrique(), { "forceResize" : true, "width" : 216, theme : "Slider", "height" : 196, texte: false }) | raw }}
+								{% endif %}
+							{% endfor %} 
+						</div>
+					</div>
+					<div class="block span-12 produits-item-partie-millieu">
+							{{ rubrique.getTexte() | raw }}
+						<a href="{{ path('SiteHomeBundle_ongledetails') }}"> Voir la carte </a>
+					</div>
+					<div class="block span-6 produits-item-partie-droite last">
+						<div class="block-srcshot">
+							<img src="{{ image(rubrique.getPathAbsoluteLocalLogo()).forceResize(220, 196) }}" alt="{{ rubrique.getTitre() }}">
+						</div>
+					</div>
+					
+			</div>
+		{% endfor %}
+			{{ tools.homeRubrique(7, 146, 2) }}
+			{{ tools.homeRubrique(8, 146, 3) }}
+			{{ tools.homeRubrique(11, 96, 4) }}
+			{{ tools.homeRubrique(10, 96, 5) }}
+	</div>
+
+{% endblock %}

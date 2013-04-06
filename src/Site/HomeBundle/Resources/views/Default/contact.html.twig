@@ -1,0 +1,52 @@
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+	    {% 
+        		stylesheets output='css/contact.css' 
+        		'@SiteHomeBundle/Resources/public/css/contact.css'
+        %}        		
+        	<link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="screen" />
+        {% endstylesheets %}
+{% endblock %}
+
+
+{% block bandeau %} {% endblock %}
+
+{% block body %}
+
+	<div id="formulaire-contact" class="span-10 prepend-2 prepend-top append-bottom">
+		<fieldset class="formulaire">
+			<legend> Nous contacter </legend>
+			
+			<form action="#" method="post">
+				{% render "IHQSContactBundle:Contact:form" %}
+			</form>
+		</fieldset>
+		<img src="{{ asset('/images/salon.jpg') }}">
+		<div id="moyen-payement">
+			<h2 class="block-title">Moyens de paiement</h2>
+			<div class="block-content prepend-top">Chèque, Carte bleu, Espèce, Chèque cadeaux</div>
+		</div>
+	</div>
+	
+	<div>
+		<div id="plan-acces" class="span-8 prepend-1 prepend-top">
+			<img id="google-map" class="prepend-top" src="http://maps.googleapis.com/maps/api/staticmap?center=77860+40+Rue+de+Paris&zoom=15&size=356x246&maptype=roadmap
+	&markers=color:orange%7Clabel:L%7C48.88358,2.84846&sensor=false">
+			<p>
+				Parking client à proximité
+			</p>
+		</div>
+	
+	
+		<div class="span-8 prepend-1 prepend-top last append-bottom" id="contact">
+			{% for article in boucleArticles({ "idArticle" : 3 }) %}
+				<h2 class="block-title">{{ article.titre }}</h2>
+				<div class="block-content">
+					{{ article.texte | raw }}
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+	
+{% endblock %}
